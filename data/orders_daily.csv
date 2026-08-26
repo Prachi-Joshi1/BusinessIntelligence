@@ -1,0 +1,181 @@
+order_date,region,revenue,units,discount_percent,return_status
+2026-05-29,Northeast,4937.27,98,14.51,No Return
+2026-05-29,South,5049.33,100,6.56,No Return
+2026-05-30,Northeast,4798.16,96,13.66,No Return
+2026-05-30,South,5124.45,102,5.21,Pending
+2026-05-31,Northeast,5207.55,104,7.12,No Return
+2026-05-31,South,4880.44,97,8.04,No Return
+2026-06-01,Northeast,5025.56,100,7.91,No Return
+2026-06-01,South,4877.58,97,7.92,No Return
+2026-06-02,Northeast,5057.68,101,12.85,No Return
+2026-06-02,South,5087.23,102,10.92,No Return
+2026-06-03,Northeast,5154.85,103,6.71,No Return
+2026-06-03,South,5328.93,107,14.66,No Return
+2026-06-04,Northeast,5019.96,100,5.98,No Return
+2026-06-04,South,5089.36,102,6.22,No Return
+2026-06-05,Northeast,4900.68,98,14.09,No Return
+2026-06-05,South,5223.54,105,8.12,No Return
+2026-06-06,Northeast,5184.1,104,6.85,Pending
+2026-06-06,South,5301.97,106,14.39,Returned
+2026-06-07,Northeast,5230.71,105,14.22,No Return
+2026-06-07,South,5022.52,101,5.45,No Return
+2026-06-08,Northeast,5142.11,103,7.71,No Return
+2026-06-08,South,5125.51,103,7.81,No Return
+2026-06-09,Northeast,5032.56,101,13.02,No Return
+2026-06-09,South,5474.15,110,12.72,No Return
+2026-06-10,Northeast,4980.89,100,13.15,No Return
+2026-06-10,South,5360.0,108,12.71,No Return
+2026-06-11,Northeast,5185.55,104,6.16,Returned
+2026-06-11,South,5324.85,107,8.31,No Return
+2026-06-12,Northeast,5180.2,104,8.25,No Return
+2026-06-12,South,5352.63,108,13.87,No Return
+2026-06-13,Northeast,5098.38,103,12.13,No Return
+2026-06-13,South,5332.48,108,12.71,No Return
+2026-06-14,Northeast,5332.09,108,9.28,No Return
+2026-06-14,South,5111.4,103,5.31,No Return
+2026-06-15,Northeast,5240.87,106,10.09,Returned
+2026-06-15,South,5206.12,105,9.1,No Return
+2026-06-16,Northeast,5214.64,106,5.77,No Return
+2026-06-16,South,5178.41,105,14.3,No Return
+2026-06-17,Northeast,5451.77,110,13.71,No Return
+2026-06-17,South,5211.37,106,13.93,No Return
+2026-06-18,Northeast,5566.02,113,13.96,No Return
+2026-06-18,South,5189.43,105,7.28,No Return
+2026-06-19,Northeast,5592.36,114,13.61,No Return
+2026-06-19,South,5425.83,110,9.17,No Return
+2026-06-20,Northeast,5233.21,106,8.38,Returned
+2026-06-20,South,5343.82,109,10.19,No Return
+2026-06-21,Northeast,5385.54,109,14.72,Pending
+2026-06-21,South,5324.47,108,9.97,No Return
+2026-06-22,Northeast,5362.09,109,5.37,No Return
+2026-06-22,South,5481.47,112,5.51,No Return
+2026-06-23,Northeast,5724.55,117,7.4,No Return
+2026-06-23,South,5494.2,112,14.86,No Return
+2026-06-24,Northeast,5615.02,114,12.62,No Return
+2026-06-24,South,5645.98,115,8.68,No Return
+2026-06-25,Northeast,5613.98,115,10.36,No Return
+2026-06-25,South,5725.76,117,8.21,No Return
+2026-06-26,Northeast,5304.67,108,10.91,No Return
+2026-06-26,South,5291.22,108,10.12,No Return
+2026-06-27,Northeast,5661.01,116,6.74,No Return
+2026-06-27,South,5516.8,113,14.37,No Return
+2026-06-28,Northeast,5511.0,113,6.13,Returned
+2026-06-28,South,5811.31,119,7.58,No Return
+2026-06-29,Northeast,5798.28,119,10.55,No Return
+2026-06-29,South,5474.92,112,5.93,Returned
+2026-06-30,Northeast,5865.84,120,11.33,No Return
+2026-06-30,South,5554.95,114,12.26,Returned
+2026-07-01,Northeast,5879.09,121,12.8,No Return
+2026-07-01,South,5424.62,111,6.62,Returned
+2026-07-02,Northeast,5740.45,118,5.09,No Return
+2026-07-02,South,5772.87,118,5.05,No Return
+2026-07-03,Northeast,5727.78,118,11.92,No Return
+2026-07-03,South,5542.83,114,12.12,No Return
+2026-07-04,Northeast,5620.13,115,12.46,No Return
+2026-07-04,South,5919.76,122,11.58,No Return
+2026-07-05,Northeast,5506.77,113,8.68,No Return
+2026-07-05,South,5593.05,115,14.73,No Return
+2026-07-06,Northeast,5985.82,123,11.31,No Return
+2026-07-06,South,5761.52,119,10.77,No Return
+2026-07-07,Northeast,5603.85,115,12.22,No Return
+2026-07-07,South,5505.05,113,11.45,No Return
+2026-07-08,Northeast,6055.47,125,14.54,Returned
+2026-07-08,South,5724.69,118,5.15,Returned
+2026-07-09,Northeast,5778.2,119,14.67,Pending
+2026-07-09,South,6025.45,124,7.94,No Return
+2026-07-10,Northeast,6045.06,125,8.17,No Return
+2026-07-10,South,5873.17,121,14.36,No Return
+2026-07-11,Northeast,5901.06,122,5.97,No Return
+2026-07-11,South,6147.17,127,6.4,No Return
+2026-07-12,Northeast,6101.9,126,12.41,No Return
+2026-07-12,South,5999.06,124,8.59,No Return
+2026-07-13,Northeast,6082.52,126,13.1,Returned
+2026-07-13,South,6143.81,127,10.11,No Return
+2026-07-14,Northeast,6096.59,126,11.5,No Return
+2026-07-14,South,6095.11,126,13.9,No Return
+2026-07-15,Northeast,5866.1,121,5.94,No Return
+2026-07-15,South,5664.35,117,9.66,No Return
+2026-07-16,Northeast,5832.78,121,10.91,No Return
+2026-07-16,South,5684.26,118,13.23,No Return
+2026-07-17,Northeast,5756.98,119,10.22,No Return
+2026-07-17,South,5810.06,120,11.23,No Return
+2026-07-18,Northeast,5731.01,119,10.31,No Return
+2026-07-18,South,6082.46,126,12.26,Pending
+2026-07-19,Northeast,6029.81,125,8.23,No Return
+2026-07-19,South,5882.04,122,9.39,No Return
+2026-07-20,Northeast,5753.31,120,14.63,No Return
+2026-07-20,South,6158.37,128,9.09,No Return
+2026-07-21,Northeast,5851.8,122,7.5,No Return
+2026-07-21,South,6190.05,129,11.6,No Return
+2026-07-22,Northeast,6356.56,132,12.38,No Return
+2026-07-22,South,6147.93,128,9.2,No Return
+2026-07-23,Northeast,6012.14,125,12.58,No Return
+2026-07-23,South,5865.8,122,5.46,No Return
+2026-07-24,Northeast,6337.54,132,12.04,No Return
+2026-07-24,South,5873.87,122,9.92,No Return
+2026-07-25,Northeast,5939.35,124,9.34,No Return
+2026-07-25,South,6211.13,129,11.35,No Return
+2026-07-26,Northeast,6082.76,127,11.26,No Return
+2026-07-26,South,6379.6,133,11.59,No Return
+2026-07-27,Northeast,5914.61,123,11.42,No Return
+2026-07-27,South,6233.01,130,14.4,No Return
+2026-07-28,Northeast,6130.67,128,11.43,No Return
+2026-07-28,South,6228.28,130,14.41,No Return
+2026-07-29,Northeast,6506.86,136,14.05,No Return
+2026-07-29,South,5952.14,124,6.01,No Return
+2026-07-30,Northeast,5986.93,125,11.83,No Return
+2026-07-30,South,6127.04,128,13.45,No Return
+2026-07-31,Northeast,6456.86,135,7.82,No Return
+2026-07-31,South,6383.16,134,11.29,Returned
+2026-08-01,Northeast,6427.62,135,13.03,No Return
+2026-08-01,South,6077.43,127,12.51,No Return
+2026-08-02,Northeast,6609.02,138,9.13,No Return
+2026-08-02,South,6474.14,136,8.41,Returned
+2026-08-03,Northeast,6546.52,137,9.29,No Return
+2026-08-03,South,6480.87,136,6.03,Returned
+2026-08-04,Northeast,6343.33,133,13.26,No Return
+2026-08-04,South,6590.76,138,8.89,No Return
+2026-08-05,Northeast,6617.82,139,5.91,No Return
+2026-08-05,South,6646.24,140,14.51,No Return
+2026-08-06,Northeast,6464.11,136,9.48,No Return
+2026-08-06,South,6270.69,132,11.73,No Return
+2026-08-07,Northeast,6586.61,138,12.9,No Return
+2026-08-07,South,6396.43,134,5.58,No Return
+2026-08-08,Northeast,6382.46,134,13.88,No Return
+2026-08-08,South,6174.16,130,6.43,No Return
+2026-08-09,Northeast,6516.13,137,6.01,No Return
+2026-08-09,South,6569.42,138,5.73,No Return
+2026-08-10,Northeast,6593.23,139,5.81,No Return
+2026-08-10,South,6774.37,143,8.74,No Return
+2026-08-11,Northeast,6682.69,141,14.47,Pending
+2026-08-11,South,6644.19,140,8.76,No Return
+2026-08-12,Northeast,6680.15,141,10.58,No Return
+2026-08-12,South,6764.13,143,6.11,No Return
+2026-08-13,Northeast,6201.4,131,9.69,No Return
+2026-08-13,South,6271.47,132,6.18,No Return
+2026-08-14,Northeast,6700.91,141,10.83,Pending
+2026-08-14,South,6458.17,136,7.86,Returned
+2026-08-15,Northeast,6378.68,135,14.63,No Return
+2026-08-15,South,6868.24,145,5.43,Returned
+2026-08-16,Northeast,6598.23,139,14.93,No Return
+2026-08-16,South,6615.44,140,14.69,No Return
+2026-08-17,Northeast,6685.4,141,11.96,No Return
+2026-08-17,South,6684.19,141,10.84,Returned
+2026-08-18,Northeast,6319.09,134,7.81,Pending
+2026-08-18,South,6878.35,145,9.56,No Return
+2026-08-19,Northeast,6492.18,137,6.88,No Return
+2026-08-19,South,6542.63,138,10.84,No Return
+2026-08-20,Northeast,6415.95,136,11.98,No Return
+2026-08-20,South,6533.15,138,13.14,No Return
+2026-08-21,Northeast,5926.76,125,13.23,Returned
+2026-08-21,South,6830.78,145,11.13,No Return
+2026-08-22,Northeast,6412.01,135,5.45,No Return
+2026-08-22,South,6617.23,140,13.11,Pending
+2026-08-23,Northeast,5913.63,125,8.81,Pending
+2026-08-23,South,6949.9,147,13.38,No Return
+2026-08-24,Northeast,6050.87,128,5.56,Returned
+2026-08-24,South,6950.9,147,15.0,Pending
+2026-08-25,Northeast,6222.27,131,14.45,No Return
+2026-08-25,South,6589.21,140,9.51,No Return
+2026-08-26,Northeast,6464.99,137,7.29,No Return
+2026-08-26,South,6860.09,146,8.58,No Return
