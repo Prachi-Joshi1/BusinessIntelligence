@@ -1,0 +1,13 @@
+{
+  "kpi_name": "Revenue",
+  "definition": "Total sales revenue generated from completed orders before operating expenses.",
+  "formula": "Traffic * Conversion Rate * Average Order Value (AOV)",
+  "update_frequency": "Daily",
+  "owner": "VP of E-Commerce",
+  "data_source": "orders_daily.csv",
+  "role_based_access": {
+    "Executive": "Full Access",
+    "Store Manager": "Filtered by Region",
+    "Store Associate": "Redacted"
+  }
+}
