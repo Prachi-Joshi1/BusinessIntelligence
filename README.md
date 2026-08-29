@@ -8,8 +8,8 @@ abstain when data is insufficient, and enforce role-based access — all inside 
 
 | Layer | File(s) | Responsibility |
 |---|---|---|
-| ⚙️ Deterministic Math Engine | `src/contribution_engine.py`, `src/anomaly_engine.py` | Pure pandas/Python. Computes anomalies (z-score + absolute impact) and decomposes revenue variance into Volume vs. Price drivers. Numbers are never touched by the LLM. |
-| ✨ Generative Synthesis | `src/llm_synthesizer.py` | Retrieves relevant unstructured logs and asks Gemini to narrate the *why*, strictly grounded in the math JSON, with an explicit abstention rule when evidence is missing. |
+| Deterministic Math Engine | `src/contribution_engine.py`, `src/anomaly_engine.py` | Pure pandas/Python. Computes anomalies (z-score + absolute impact) and decomposes revenue variance into Volume vs. Price drivers. Numbers are never touched by the LLM. |
+| Generative Synthesis | `src/llm_synthesizer.py` | Retrieves relevant unstructured logs and asks Gemini to narrate the *why*, strictly grounded in the math JSON, with an explicit abstention rule when evidence is missing. |
 
 This separation means the LLM is never allowed to invent a number — it can only explain numbers
 that Python already calculated.
