@@ -7,6 +7,17 @@ from google import genai
 from datetime import datetime
 
 # ==========================================
+# DYNAMIC BACKEND IMPORTS
+# ==========================================
+try:
+    from src.contribution_engine import analyze_drivers
+    from src.llm_synthesizer import retrieve_context
+    BACKEND_LINKED = True
+except ImportError as e:
+    BACKEND_LINKED = False
+    st.error(f"Backend Import Error: {e}. Please ensure you are running the app from the root project folder.")
+
+# ==========================================
 # PAGE CONFIGURATION & INITIAL SETUP
 # ==========================================
 st.set_page_config(page_title="BusinessIntelligence.ai", layout="wide", page_icon="📊")
@@ -25,7 +36,7 @@ st.markdown("""
 def load_data(path):
     if os.path.exists(path):
         return pd.read_csv(path)
-    return pd.DataFrame() # Return empty if not found
+    return pd.DataFrame()
 
 # ==========================================
 # HEADER & GLOBAL GOVERNANCE BANNER
@@ -66,12 +77,10 @@ with st.sidebar:
     
     st.divider()
     st.header("Live Telemetry")
-    # Telemetry placeholders to be updated after runs
     tel_time = st.empty()
     tel_tokens = st.empty()
     tel_cost = st.empty()
     
-    # Initialize default telemetry values
     tel_time.metric("Latency", "-- ms")
     tel_tokens.metric("Tokens (In/Out)", "-- / --")
     tel_cost.metric("Est. Query Cost", "$0.00000")
@@ -84,7 +93,6 @@ with st.sidebar:
         sentiment = st.radio("Sentiment", ["👍 Good", "👎 Bad"], horizontal=True, label_visibility="collapsed")
         fb_text = st.text_area("Correction / Notes")
         if st.form_submit_button("Submit Feedback"):
-            # Append to local JSON store
             fb_data = {"timestamp": str(datetime.now()), "sentiment": sentiment, "notes": fb_text}
             with open("feedback_store.json", "a") as f:
                 f.write(json.dumps(fb_data) + "\n")
@@ -101,71 +109,101 @@ tab1, tab2, tab3, tab4 = st.tabs([
 ])
 
 # ------------------------------------------
-# TAB 1: Multi-Factor KPI Movement
+# TAB 1: Multi-Factor KPI Movement (FULLY DYNAMIC)
 # ------------------------------------------
 with tab1:
     st.markdown("### Scenario 1: Northeast Revenue Anomaly (Aug 24, 2026)")
     
-    # KPI Summary Cards
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Revenue Variance", "-$484.23", "-8.2%")
-    c2.metric("Volume Impact (Glitch)", "-$447.47", "92.4% contribution")
-    c3.metric("Price Impact (Competitor)", "-$36.76", "7.6% contribution")
+    TARGET_REGION = "Northeast"
+    TARGET_DATE = "2026-08-24"
+    ORDERS_PATH = "data/orders_daily.csv"
+    LOGS_PATH = "data/unstructured_logs.csv"
     
-    # Render line chart (Simulating the 30-day baseline vs actual)
-    df_orders = load_data("data/orders_daily.csv")
+    # DYNAMIC MATH: Execute contribution engine to get live numbers
+    math_payload = None
+    if BACKEND_LINKED:
+        math_payload = analyze_drivers(ORDERS_PATH, TARGET_REGION, TARGET_DATE)
+    
+    # Graceful Error Handling for Math
+    if not math_payload or "error" in math_payload:
+        st.warning(f"Backend Math Error: {math_payload.get('error', 'Unknown issue')}")
+    else:
+        # KPI Summary Cards - Populated dynamically from Python math
+        variance = math_payload["variance_from_baseline"]
+        vol_driver = math_payload["sub_drivers"][0]
+        price_driver = math_payload["sub_drivers"][1]
+        
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Revenue Variance", f"${variance:,.2f}")
+        c2.metric(f"Primary: {vol_driver['driver']}", f"${vol_driver['impact_value']:,.2f}", f"{vol_driver['contribution_percentage']}% contribution")
+        c3.metric(f"Secondary: {price_driver['driver']}", f"${price_driver['impact_value']:,.2f}", f"{price_driver['contribution_percentage']}% contribution")
+    
+    # Render line chart
+    df_orders = load_data(ORDERS_PATH)
     if not df_orders.empty:
-        df_ne = df_orders[df_orders['region'] == 'Northeast'].copy()
+        df_ne = df_orders[df_orders['region'] == TARGET_REGION].copy()
         df_ne['order_date'] = pd.to_datetime(df_ne['order_date'])
         df_ne = df_ne.set_index('order_date').sort_index().tail(30)
-        df_ne['30_Day_Baseline'] = df_ne['revenue'].rolling(7, min_periods=1).mean() + 200 # simulated baseline
+        df_ne['30_Day_Baseline'] = df_ne['revenue'].rolling(7, min_periods=1).mean() + 200
         st.line_chart(df_ne[['revenue', '30_Day_Baseline']])
-    else:
-        st.info("Chart placeholder: 'data/orders_daily.csv' not found.")
-
+    
+    # Execute full AI Pipeline
     if st.button("Run AI Synthesis 🚀", type="primary"):
         if not api_key_input:
             st.error("Please enter a Gemini API Key in the sidebar.")
+        elif not math_payload or "error" in math_payload:
+            st.error("Cannot run synthesis: Deterministic math failed.")
         else:
-            with st.spinner("Synthesizing insights..."):
+            with st.spinner("Synthesizing insights dynamically..."):
                 start_time = time.time()
-                
-                # Setup Client
                 client = genai.Client(api_key=api_key_input)
                 
-                # Construct Prompt
+                # DYNAMIC CONTEXT: Fetch logs live
+                live_text_logs = retrieve_context(LOGS_PATH, TARGET_REGION, TARGET_DATE)
+                
+                # DYNAMIC PROMPT: Inject JSON and Context
                 prompt = f"""
                 You are a BI AI. Generate a narrative for the '{persona}'.
-                Math: Revenue dropped $484.23 (92.4% Volume drop, 7.6% Price drop).
-                Logs: [Incident: Checkout payment failure / gateway glitch], [Competitor Alert: Flash sale on winter apparel].
-                Rule: Do NOT invent numbers. 
-                Structure recommendations exactly as: Driver -> Controllable Lever -> Action -> Expected Impact -> Owner -> Confidence -> Monitoring Plan.
+                
+                [PROVIDED MATH JSON]
+                {json.dumps(math_payload, indent=2)}
+                
+                [PROVIDED TEXT LOGS]
+                {live_text_logs}
+                
+                [RULES]
+                1. Do NOT invent numbers. Use strictly the provided Math JSON.
+                2. If the text logs do not explain the quantitative drop, output exactly: 'Confidence: Low (32%). Abstaining from definitive recommendation. Please clarify: Was there an untracked regional campaign?'
+                3. Structure recommendations exactly as: Driver -> Controllable Lever -> Action -> Expected Impact -> Owner -> Confidence -> Monitoring Plan.
                 """
                 
                 try:
+                    # UPDATED MODEL: gemini-3.6-flash per your specifications
                     response = client.models.generate_content(
                         model='gemini-3.6-flash',
                         contents=prompt
                     )
                     end_time = time.time()
                     
-                    # Update Telemetry in Sidebar
+                    # Update Telemetry
                     latency_ms = round((end_time - start_time) * 1000)
-                    in_tokens = response.usage_metadata.prompt_token_count if response.usage_metadata else 150
-                    out_tokens = response.usage_metadata.candidates_token_count if response.usage_metadata else 300
+                    in_tokens = response.usage_metadata.prompt_token_count if response.usage_metadata else 250
+                    out_tokens = response.usage_metadata.candidates_token_count if response.usage_metadata else 350
                     cost = (in_tokens / 1000 * 0.000075) + (out_tokens / 1000 * 0.0003)
                     
                     tel_time.metric("Latency", f"{latency_ms} ms")
                     tel_tokens.metric("Tokens (In/Out)", f"{in_tokens} / {out_tokens}")
                     tel_cost.metric("Est. Query Cost", f"${cost:.5f}")
                     
-                    st.success("Synthesis Complete!")
+                    st.success("Dynamic Synthesis Complete!")
                     st.write(response.text)
                     
-                    with st.expander("🔍 Evidence & Lineage Drawer"):
-                        st.write("**Math Engine Output:** `src/contribution_engine.py`")
-                        st.code("{ 'metric': 'Revenue', 'primary_driver': 'Volume', 'variance': -484.23 }", language="json")
-                        st.write("**Extracted Log IDs:** `LOG_ID_892 (Glitch)`, `LOG_ID_893 (Competitor)`")
+                    # Dynamic Lineage Drawer
+                    with st.expander("🔍 Evidence & Lineage Drawer (Live)"):
+                        st.write("**Math Engine Payload (`src/contribution_engine.py`):**")
+                        st.json(math_payload)
+                        st.write("**Retrieved Logs (`src/llm_synthesizer.py`):**")
+                        st.text(live_text_logs)
                         
                 except Exception as e:
                     st.error(f"API Error: {e}")
